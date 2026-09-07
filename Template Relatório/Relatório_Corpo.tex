@@ -1,0 +1,86 @@
+\documentclass[12pt,arial]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{lipsum}
+\usepackage{tabto}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{listings}
+
+\hyphenation{palavra}
+\usepackage[top=3cm,left=3cm,bottom=2cm,right=2cm]{geometry}
+\usepackage{amsmath}
+
+% Mude para o seu nome
+\author{[Seu Nome]}
+\usepackage{setspace}
+\setstretch{1.5}
+\begin{document}
+	\begin{titlepage}
+		\begin{center}
+			\textbf{Universidade Federal de Viçosa}
+			\textit{\\Campus}
+			\textbf{Rio Paranaíba}
+			\textnormal{\\\vspace{4cm}``Nome'' - ``Matricula"}
+			\textbf{\\\vspace{5cm}``TITULO DO PROJETO"}
+			\textbf{\\\vspace{9cm}Rio Paranaíba - MG \\ 2023}
+		\end{center}
+	\end{titlepage}
+	
+		\begin{titlepage}
+			\begin{center}
+				\textbf{Universidade Federal de Viçosa}
+				\textit{\\Campus}
+				\textbf{Rio Paranaíba}
+				\textnormal{\\\vspace{3cm}``Nome'' - ``Matricula"}
+				\textbf{\\\vspace{4cm}``TITULO DO PROJETO"\vspace{3cm}}
+					\begin{flushright}
+						\begin{minipage}{.5\textwidth}
+							\textnormal{Trabalho apresentado para obtenção de créditos na disciplina SIN213 - Projeto de Algoritmo da Universidade Federal de Viçosa - Campus de Rio Paranaíba, ministrada pelo Professor Pedro Moisés de Souza.}
+						\end{minipage}
+					\end{flushright}
+					
+				\textbf{\\\vspace{3cm}Rio Paranaíba - MG \\ 2023}
+				
+			\end{center}
+		\end{titlepage}
+		
+		
+		\section{RESUMO}
+		\input{Resumo}
+		\newpage
+
+            % Sumário
+		\tableofcontents
+		\newpage
+  
+		\section{INTRODUÇÃO}
+		\input{introducao}
+		\newpage
+
+            \section{ALGORITMOS}
+		\subsection{Insertion Sort}
+		\input{Algoritmos/insertion_sort}
+		\newpage
+  
+            \section{ANÁLISE DE COMPLEXIDADE}
+		\subsection{Insertion Sort}
+		\input{Analise/insertion_sort}
+	    \newpage
+	
+		\section{TABELA E GRÁFICO}
+            \subsection{Insertion Sort}
+		\input{Tabela&Grafico/insertion_sort}
+		\newpage
+  
+		\section{CONCLUSÃO}
+		\input{conclusao}
+		\newpage
+  
+		\section{REFERÊNCIAS BIBLIOGRÁFICAS}
+		\include{file}
+
+            % Não é necessário citar
+		\section{Função para calcular o tempo}
+		\input{tempo}	
+\end{document}

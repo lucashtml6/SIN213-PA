@@ -1,0 +1,56 @@
+void operacoes(int tipo, int tamanho) {
+
+		
+
+	$clock_t start_t, end_t$; //Variavel para guardar o tempo
+	
+
+	double tempoGasto; 
+
+	
+
+	int * vetor = gerarSequencia(tipo, tamanho); //Gera sequencia de numeros
+
+	
+
+	//Salva a entrada de numeros
+
+	
+	salvarEntrada(tipo, tamanho, vetor);
+
+	
+
+	$start_t = clock()$; //Calcula o tempo atual
+
+	
+	insertionSort(vetor, tamanho); //Ordena o Vetor
+
+	
+	$end_t = clock()$;  //Calcula o tempo apos ordenação
+
+	
+	
+
+	
+
+	tempoGasto = (($end_t - start_t$) / (double)$CLOCKS_PER_SEC$); //Calcula diferença de tempo
+	
+
+	salvarTempo(tipo, tamanho, tempoGasto); //Salva o tempo gasto
+
+	
+
+	//Salva a saida do programa
+
+	
+	salvarSaida(tipo, tamanho, vetor);
+
+	
+
+	//Libera a memoria
+
+	
+	free(vetor);
+
+}
+

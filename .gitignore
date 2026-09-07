@@ -1,0 +1,34 @@
+# --- Arquivos internos do Claude ---
+.claude/
+CLAUDE.md
+
+# --- Scripts internos (nao fazem parte da entrega) ---
+Scripts/
+
+# --- Enunciados ---
+Descricoes/
+
+# --- Controle interno ---
+SPEC_IMPLEMENTACAO.md
+SPEC_RELATORIO.md
+RESULTADOS.md
+
+# --- Compilacao ---
+*.exe
+*.o
+*.obj
+
+# --- Testes descartaveis ---
+teste_*.c
+
+# --- Editor ---
+.vscode/
+
+# --- LaTeX ---
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
