@@ -8,10 +8,8 @@ Scripts/
 # --- Enunciados ---
 Descricoes/
 
-# --- Controle interno ---
-SPEC_IMPLEMENTACAO.md
-SPEC_RELATORIO.md
-RESULTADOS.md
+# --- Controle interno (specs, checkpoint, resultados) ---
+Interno/
 
 # --- Compilacao ---
 *.exe

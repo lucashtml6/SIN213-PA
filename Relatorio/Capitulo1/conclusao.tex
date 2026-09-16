@@ -1,0 +1,15 @@
+% Capitulo 1 - 3.5 Conclusao do capitulo
+
+\indent \qquad Este capítulo apresentou o Insertion Sort, deduziu o seu custo
+nos três casos e mediu o seu tempo de execução em dezoito combinações de
+tamanho e tipo de entrada. A análise e os experimentos apontaram na mesma
+direção: o algoritmo é linear quando a entrada já está ordenada e quadrático
+nos demais casos, com o pior caso custando o dobro do caso médio.
+
+\qquad Na prática, isso delimita bem onde o Insertion Sort se presta. Ele é
+simples, ordena no próprio vetor sem memória adicional e é estável, o que o
+torna uma boa escolha para conjuntos pequenos ou já quase ordenados ---
+situações em que foi rápido a ponto de não ser medido. Para entradas grandes em
+ordem qualquer, porém, o crescimento quadrático o torna impraticável: ordenar
+um milhão de elementos aleatórios levou cerca de um minuto e, em ordem inversa,
+dois. Para essa faixa são necessários algoritmos de melhor ordem de crescimento.

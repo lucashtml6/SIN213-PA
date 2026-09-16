@@ -1,0 +1,133 @@
+\documentclass[12pt,arial]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{lipsum}
+\usepackage{tabto}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{booktabs}
+
+\hyphenation{palavra}
+\usepackage[top=3cm,left=3cm,bottom=2cm,right=2cm]{geometry}
+\usepackage{amsmath}
+
+% Mude para o seu nome
+\author{Lucas Souza e Silva}
+\usepackage{setspace}
+\setstretch{1.5}
+
+% Respiro em volta de tabelas e figuras, e entre a legenda e o que ela descreve
+\setlength{\intextsep}{20pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{20pt plus 2pt minus 2pt}
+\setlength{\belowcaptionskip}{6pt}
+
+% Formatação das listagens de código
+\renewcommand{\lstlistingname}{Código}
+\lstset{
+	language=C,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\bfseries,
+	commentstyle=\itshape,
+	numbers=left,
+	numberstyle=\tiny,
+	numbersep=10pt,
+	numberblanklines=false,
+	frame=single,
+	framesep=5pt,
+	tabsize=4,
+	breaklines=true,
+	showstringspaces=false,
+	captionpos=b,
+	xleftmargin=18pt,
+	aboveskip=16pt,
+	belowskip=16pt
+}
+
+% Estilo para pseudocódigo: sem linguagem, com escape matemático para as setas
+\lstdefinestyle{pseudocodigo}{
+	language={},
+	mathescape=true,
+	morekeywords={for,to,do,while,and,end,if,then,else,return},
+	keywordstyle=\bfseries
+}
+
+\begin{document}
+	\begin{titlepage}
+		\begin{center}
+			\textbf{Universidade Federal de Viçosa}
+			\textit{\\Campus}
+			\textbf{Rio Paranaíba}
+			\textnormal{\\\vspace{4cm}Lucas Souza e Silva --- 7561}
+			\textbf{\\\vspace{5cm}ANÁLISE COMPARATIVA DE ALGORITMOS DE ORDENAÇÃO}
+			\textbf{\\\vspace{9cm}Rio Paranaíba - MG \\ 2026}
+		\end{center}
+	\end{titlepage}
+	
+		\begin{titlepage}
+			\begin{center}
+				\textbf{Universidade Federal de Viçosa}
+				\textit{\\Campus}
+				\textbf{Rio Paranaíba}
+				\textnormal{\\\vspace{3cm}Lucas Souza e Silva --- 7561}
+				\textbf{\\\vspace{4cm}ANÁLISE COMPARATIVA DE ALGORITMOS DE ORDENAÇÃO\vspace{3cm}}
+					\begin{flushright}
+						\begin{minipage}{.5\textwidth}
+							\textnormal{Trabalho apresentado para obtenção de créditos na disciplina SIN213 --- Projeto de Algoritmos da Universidade Federal de Viçosa - Campus de Rio Paranaíba, ministrada pelo Professor Pedro Moisés de Souza.}
+						\end{minipage}
+					\end{flushright}
+					
+				\textbf{\\\vspace{3cm}Rio Paranaíba - MG \\ 2026}
+				
+			\end{center}
+		\end{titlepage}
+		
+		
+		\section{RESUMO}
+		\input{Resumo}
+		\newpage
+
+            % Sumário
+		\tableofcontents
+		\newpage
+  
+		\section{INTRODUÇÃO}
+		\input{introducao}
+		\newpage
+
+		% ==================== CAPÍTULO 1 ====================
+		\section{CAPÍTULO 1 --- INSERTION SORT}
+
+		\subsection{Introdução ao algoritmo}
+		\input{Capitulo1/introducao}
+		\newpage
+
+		\subsection{Teste de mesa manual}
+		\input{Capitulo1/teste_mesa}
+		\newpage
+
+		\subsection{Análise e complexidade do algoritmo}
+		\label{sec:analise_insertion}
+		\input{Capitulo1/analise}
+		\newpage
+
+		\subsection{Tabelas e gráficos dos resultados}
+		\input{Capitulo1/tabelas_graficos}
+		\newpage
+
+		\subsection{Conclusão do capítulo}
+		\input{Capitulo1/conclusao}
+		\newpage
+
+		% ==================== CAPÍTULO 2 ====================
+		% Entra aqui quando o próximo algoritmo for definido.
+
+		\section{REFERÊNCIAS BIBLIOGRÁFICAS}
+		\input{referencias}
+		\newpage
+
+            % Não é necessário citar
+		\section{Função para calcular o tempo}
+		\input{tempo}	
+\end{document}

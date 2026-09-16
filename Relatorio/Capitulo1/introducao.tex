@@ -1,0 +1,114 @@
+\subsubsection{Como o algoritmo funciona}
+
+\indent \qquad O Insertion Sort, ou ordenação por inserção, é um dos métodos de
+ordenação mais simples que existem. Ele funciona como quem organiza cartas na
+mão: as cartas da esquerda já estão em ordem e, a cada carta nova, procura-se o
+lugar dela nesse trecho, afastando as demais para abrir espaço. É com essa mesma
+analogia que Cormen \textit{et al.} (2012) apresentam o método.
+
+\qquad O algoritmo percorre o vetor da segunda posição até a última. A cada
+passagem vale uma regra: tudo o que está à esquerda da posição atual já se
+encontra ordenado. Cormen \textit{et al.} (2012) chamam essa regra de invariante
+de laço, e é dela que sai a prova de que o algoritmo funciona.
+
+\qquad Uma passagem faz o seguinte. O elemento da posição atual é copiado para
+uma variável auxiliar, o que deixa a célula livre. Esse valor é então comparado
+com os elementos à esquerda, um a um, da direita para a esquerda. Todo elemento
+maior que ele é empurrado uma casa para a direita. A comparação para assim que
+aparece um elemento menor ou igual, ou quando o início do vetor é alcançado. O
+valor guardado no auxiliar entra na casa que sobrou. Ao fim da passagem, o
+trecho ordenado ganhou um elemento; ao fim de todas, ele é o vetor inteiro.
+
+\qquad Duas características do método importam para a análise que vem adiante. A
+primeira é que ele ordena \textit{in-place}: não usa um segundo vetor. Fora o
+auxiliar e os índices, nada cresce junto com o tamanho da entrada, e por isso o
+espaço extra é $O(1)$. A segunda é que ele é estável: um elemento só é empurrado
+quando é estritamente maior que o valor a ser inserido, de modo que dois
+elementos iguais nunca trocam de ordem entre si (ZIVIANI, 2011).
+
+\subsubsection{Exemplo passo a passo}
+
+\indent \qquad A Tabela \ref{tab:exemplo_insertion} mostra esse processo em um vetor de
+cinco elementos, exibindo o estado dele ao fim de cada passagem. Nela, a
+passagem $j = 3$ não move nada, enquanto a passagem $j = 4$ move três elementos.
+O trabalho de cada passagem não é fixo: depende de quão longe o elemento está do
+seu lugar definitivo. É dessa variação que nascem o melhor e o pior caso.
+
+\begin{spacing}{1.0}
+	\begin{table}[htbp]
+		\centering
+		\caption{Insertion Sort aplicado ao vetor [7, 3, 9, 2, 5]. Em negrito, o trecho já ordenado ao fim de cada passagem.}
+		\label{tab:exemplo_insertion}
+		\begin{tabular}{c|ccccc|l}
+			\hline
+			\textbf{Passagem} & \multicolumn{5}{c|}{\textbf{Vetor}} & \textbf{O que ocorreu} \\
+			\hline
+			inicial & \textbf{7} & 3 & 9 & 2 & 5 & apenas o 7 está ordenado \\
+			$j = 2$ & \textbf{3} & \textbf{7} & 9 & 2 & 5 & o 7 desloca; o 3 vai ao início \\
+			$j = 3$ & \textbf{3} & \textbf{7} & \textbf{9} & 2 & 5 & o 9 já é maior que o 7 \\
+			$j = 4$ & \textbf{2} & \textbf{3} & \textbf{7} & \textbf{9} & 5 & o 2 percorre três elementos \\
+			$j = 5$ & \textbf{2} & \textbf{3} & \textbf{5} & \textbf{7} & \textbf{9} & o 5 para logo após o 3 \\
+			\hline
+		\end{tabular}
+	\end{table}
+\end{spacing}
+
+\subsubsection{Pseudocódigo e custo por linha}
+
+\indent \qquad A Tabela \ref{tab:custo_insertion} apresenta o algoritmo em
+pseudocódigo e associa a cada linha o seu custo. O termo $c_k$ é o custo de
+executar uma vez a linha $k$, e $t_j$, o número de vezes que o teste do laço
+interno é avaliado na passagem $j$. Os dois reaparecem na Seção
+\ref{sec:analise_insertion}.
+
+\begin{spacing}{1.0}
+	\begin{table}[H]
+		\centering
+		\caption{Pseudocódigo do Insertion Sort, com o custo e o número de execuções de cada linha.}
+		% [H] em vez de flutuante: como flutuante o LaTeX a empurrava para depois da quebra
+		\label{tab:custo_insertion}
+		\renewcommand{\arraystretch}{1.3}
+		\begin{tabular}{rlcc}
+			\toprule
+			\multicolumn{4}{c}{\textbf{\textit{INSERTION-SORT(A)}}} \\
+			\midrule
+			& \textbf{PSEUDOCÓDIGO} & \textbf{CUSTO} & \textbf{VEZES} \\
+			\midrule
+			1- & \texttt{for j $\leftarrow$ 2 to length(A) do} & $c_1$ & $n$ \\
+			2- & \texttt{\hspace*{1em}key $\leftarrow$ A[j]} & $c_2$ & $n-1$ \\
+			3- & \texttt{\hspace*{1em}i $\leftarrow$ j - 1} & $c_3$ & $n-1$ \\
+			4- & \texttt{\hspace*{1em}while i $>$ 0 and A[i] $>$ key do} & $c_4$ & $\sum\limits_{j=2}^{n} t_j$ \\
+			5- & \texttt{\hspace*{2em}A[i + 1] $\leftarrow$ A[i]} & $c_5$ & $\sum\limits_{j=2}^{n}(t_j - 1)$ \\
+			6- & \texttt{\hspace*{2em}i $\leftarrow$ i - 1} & $c_6$ & $\sum\limits_{j=2}^{n}(t_j - 1)$ \\
+			7- & \texttt{\hspace*{1em}A[i + 1] $\leftarrow$ key} & $c_7$ & $n-1$ \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+\end{spacing}
+
+\subsubsection{Implementação em linguagem C}
+
+\indent \qquad A implementação usada neste trabalho é a versão tradicional apresentada
+em sala de aula, escrita em linguagem C e reproduzida no Código
+\ref{cod:insertion_sort}.
+
+\begin{spacing}{1.0}
+\begin{lstlisting}[caption={Implementação do Insertion Sort em linguagem C.},label={cod:insertion_sort}]
+	
+    int i, j, aux;
+
+    for (i = 1; i < tamanho; i++) {
+
+        aux = vetor[i];
+        j = i - 1;
+
+        while (j >= 0 && vetor[j] > aux) {
+            vetor[j + 1] = vetor[j];
+            j--;
+        }
+
+        vetor[j + 1] = aux;
+    }
+
+\end{lstlisting}
+\end{spacing}
