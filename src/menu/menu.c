@@ -6,23 +6,32 @@
 // função genérica para ler uma opção de menu. Devolve a opção lida.
 int lerOpcao(int minimo, int maximo) {
 
-    int opcao, c;
+    int opcao, c, lido;
 
     while (1) {
         printf("Opcao: ");
 
-        if (scanf("%d", &opcao) == 1 && opcao >= minimo && opcao <= maximo) {
+        lido = scanf("%d", &opcao);
+
+        if (lido == 1 && opcao >= minimo && opcao <= maximo) {
             return opcao;
         }
 
-        if (feof(stdin)) exit(1);                    /* entrada encerrada */
-        while ((c = getchar()) != '\n' && c != EOF); /* descarta o resto da linha */
+        if (feof(stdin)) {
+            exit(1);
+        }
+
+        c = getchar();
+
+        while (c != '\n' && c != EOF) {
+            c = getchar();
+        }
 
         printf("Opcao invalida.\n\n");
     }
 }
 
-/* Menu 1: algoritmo. Devolve 0 para sair. */
+
 int menuAlgoritmo() {
     
     int opc_algoritmo;
@@ -30,14 +39,16 @@ int menuAlgoritmo() {
     printf("\n");
     printf("Escolha o algoritmo:\n\n");
     printf("[1] Insertion Sort\n");
+    printf("[2] Selection Sort\n");
+    printf("[3] Bubble Sort\n");
+    printf("[4] Shell Sort\n");
     printf("[0] Sair\n\n");
 
-    opc_algoritmo = lerOpcao(0, 1);
+    opc_algoritmo = lerOpcao(0, 4);
     
     return opc_algoritmo;
 }
 
-// Menu 2: tamanho da entrada. Devolve o tamanho em si, ou 0 para sair.
 int menuTamanho() {
 
     int tamanhos[6] = {10, 100, 1000, 10000, 100000, 1000000};
@@ -59,12 +70,13 @@ int menuTamanho() {
         return 0;
     }
 
-    opc_tamanho = tamanhos[opc_tamanho - 1]; // ex: se o usuário digitar 1, devolve 10
+    // ex: se o usuário digitar 1, devolve 10
+    opc_tamanho = tamanhos[opc_tamanho - 1];
 
     return opc_tamanho;
 }
 
-/* Menu 3: tipo de instancia. Devolve NULL para sair. */
+
 char *menuInstancia() {
     int opc_instancia;
     char *instancias[3] = {"Crescente", "Decrescente", "Random"};

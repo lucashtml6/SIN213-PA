@@ -6,7 +6,10 @@ gcc -std=c99 -O2 -Wall -Isrc -o programa.exe ^
     src/app/main.c ^
     src/menu/menu.c ^
     src/gerador/gerador.c ^
-    src/algoritmos/algoritmos.c ^
+    src/algoritmos/insertion_sort.c ^
+    src/algoritmos/selection_sort.c ^
+    src/algoritmos/bubble_sort.c ^
+    src/algoritmos/shell_sort.c ^
     src/saida/saida.c
 
 if %errorlevel%==0 (

@@ -4,13 +4,18 @@
 
 #include "gerador.h"
 
-/* rand() aqui vai so ate 32767 (RAND_MAX do MinGW), faixa pequena demais para
-   sortear posicoes de um vetor de 1.000.000. Junta dois sorteios de 15 bits. */
 static int aleatorio(int limite) {
 
-    long r = ((long)(rand() & 0x7FFF) << 15) | (rand() & 0x7FFF);
+    long parteAlta, parteBaixa, sorteio, posicao;
 
-    return (int)(r % limite);
+    parteAlta = rand() & 0x7FFF;
+    parteBaixa = rand() & 0x7FFF;
+
+    sorteio = (parteAlta << 15) | parteBaixa;
+
+    posicao = sorteio % limite;
+
+    return (int)posicao;
 }
 
 
@@ -26,7 +31,7 @@ static void preencherVetor(int *vetor, int tamanho, char *instancia) {
     // decrescente: inverte o vetor crescente
     if (strcmp(instancia, "Decrescente") == 0) {
 
-        for (i = 0; i < tamanho / 2; i++) { // tamanho / 2 para nao inverter de novo
+        for (i = 0; i < tamanho / 2; i++) {
             aux = vetor[i];
             vetor[i] = vetor[tamanho - 1 - i];
             vetor[tamanho - 1 - i] = aux;
@@ -35,8 +40,6 @@ static void preencherVetor(int *vetor, int tamanho, char *instancia) {
     // random
     } else if (strcmp(instancia, "Random") == 0) {
 
-        /* Fisher-Yates: percorre de tras para frente trocando cada posicao
-           com uma sorteada entre as que ainda nao passaram. */
         for (i = tamanho - 1; i > 0; i--) {
 
             j = aleatorio(i + 1);
@@ -48,10 +51,7 @@ static void preencherVetor(int *vetor, int tamanho, char *instancia) {
     }
 }
 
-/* Grava o arquivo em:
-     <algoritmo>/Arquivos de Entrada/<instancia>/Entrada<instancia><tamanho>.txt
-   Primeira linha: o tamanho da instancia. Depois, um numero por linha.
-   Devolve o vetor gerado; o free fica por conta de quem chamou. */
+
 int *gerarEntrada(char *algoritmo, char *instancia, int tamanho) {
 
     char caminho[256];

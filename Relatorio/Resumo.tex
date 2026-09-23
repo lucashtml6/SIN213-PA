@@ -1,2 +1,17 @@
-% Secao global - em branco por enquanto.
-% Rascunho anterior preservado em Interno/Rascunhos/resumo_v1.tex
+% Secao global. Um paragrafo: por que ordenacao importa, o que foi feito, o
+% que foi encontrado. Revisar a cada entrega, quando entrar algoritmo novo.
+
+\indent \qquad Ordenar é uma das operações mais frequentes em computação, e os
+algoritmos que a realizam diferem muito em custo conforme o tamanho e a ordem
+inicial dos dados. Conhecer esse comportamento é o que permite escolher o
+algoritmo certo para cada situação. Este trabalho implementa o Insertion Sort
+em linguagem C e mede o seu tempo de execução em dezoito combinações de entrada:
+seis tamanhos, de 10 a 1.000.000 de elementos, em três tipos de instância ---
+crescente, decrescente e aleatória. Os resultados confirmaram a análise teórica.
+Com a entrada já ordenada, o algoritmo é linear e não registrou tempo mensurável
+em nenhum tamanho. Com entradas decrescente e aleatória, ele é quadrático:
+multiplicar o número de elementos por dez multiplicou o tempo por cerca de cem,
+e a entrada decrescente, que é o pior caso, custou o dobro da aleatória. O
+Insertion Sort mostrou-se adequado a conjuntos pequenos ou quase ordenados e
+impraticável para entradas grandes em ordem qualquer, em que um milhão de
+elementos levou até dois minutos para ser ordenado.

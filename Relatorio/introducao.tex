@@ -1,2 +1,36 @@
-% Secao global - em branco por enquanto.
-% Vai apresentar brevemente os algoritmos tratados, um capitulo por algoritmo.
+% Secao global. Contexto, objetivo do trabalho e uma apresentacao breve de
+% cada algoritmo coberto, na ordem dos capitulos. A cada entrega, entra um
+% paragrafo para o algoritmo novo.
+
+\indent \qquad Em várias situações do dia a dia nos deparamos com a
+necessidade de trabalhar com dados devidamente ordenados. Ao procurar um
+contato numa lista telefônica, por exemplo, tudo depende de os nomes estarem
+em ordem alfabética; sem isso, a busca seria elemento por elemento. Não é
+difícil perceber que a ordenação está presente em boa parte do que se faz em
+computação, seja como fim, seja como etapa de outra tarefa, e por isso ela é
+tratada como um dos problemas fundamentais da área (CORMEN \textit{et al.},
+2012).
+
+\qquad Existem muitos algoritmos de ordenação, e eles diferem bastante entre
+si: alguns são simples de entender e implementar, mas ficam lentos à medida que
+a entrada cresce; outros são mais elaborados e escalam melhor. O custo de cada
+um também depende da ordem em que os dados chegam --- o mesmo algoritmo pode
+ser rápido para uma entrada quase ordenada e lento para uma entrada invertida.
+Conhecer esse comportamento é o que permite escolher o algoritmo adequado para
+cada situação.
+
+\qquad O objetivo deste trabalho é implementar algoritmos de ordenação em
+linguagem C e analisar o seu desempenho de duas maneiras que se complementam:
+pela análise de complexidade, que prevê como o custo cresce com o tamanho da
+entrada, e pela medição experimental, que registra o tempo real de execução em
+instâncias de diferentes tamanhos e tipos. Cada algoritmo ocupa um capítulo
+próprio, que o apresenta, analisa a sua complexidade, discute os experimentos
+realizados com ele e conclui sobre o seu desempenho.
+
+\qquad O Capítulo 1 trata do \textbf{Insertion Sort}, ou ordenação por
+inserção. É um dos métodos mais simples que existem: percorre o vetor da
+esquerda para a direita e, a cada elemento, procura o lugar dele no trecho já
+ordenado, deslocando os maiores para abrir espaço. Sua simplicidade tem um
+preço, o custo quadrático nos casos médio e pior --- mas ele tem também um
+melhor caso linear, quando a entrada já está ordenada, e é justamente essa
+diferença entre os casos que os experimentos do capítulo tornam visível.
